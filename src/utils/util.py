@@ -4,13 +4,12 @@ util 함수를 모아놓은 파일
 import os
 import shutil
 
-#from tqdm import tqdm
-
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.image as mpimg
 import matplotlib.font_manager as fm
 
+import globals
 
 # Bounding Box 시각화
 def visualize_annotations(train_img_dir,
@@ -51,7 +50,7 @@ def visualize_annotations(train_img_dir,
     print(f"🔍 Image ID {img_id} - {len(img_annotations)}개 객체 검출:")
 
     # 폰트 경로 지정 (윈도우 기본 폰트 폴더)
-    font_path = 'C:/Windows/Fonts/malgun.ttf'
+    font_path = globals.FONT_PATH
 
     # FontProperties 객체 생성
     font_prop = fm.FontProperties(fname=font_path, size=15)
@@ -95,7 +94,7 @@ print("✅ 개선된 시각화 함수 준비 완료!")
 
 
 # 특정 이미지의 annotation 상세 확인
-def check_image_annotations(img_id):
+def check_image_annotations(img_id, images_df, annotations_df, categories_df):
     """특정 이미지의 annotation 상세 정보 확인"""
 
     # 이미지 정보
@@ -121,10 +120,6 @@ def check_image_annotations(img_id):
         print("⚠️ Annotation이 없습니다!")
 
     print("\n" + "="*60)
-
-# 위에서 본 이미지들 확인
-#check_image_annotations(1023)  # 첫 번째 이미지
-#check_image_annotations(599)   # 두 번째 이미지
 
 
 def convert_to_yolo_format(img_info, annotations, save_img_dir, save_label_dir, category_id_mapping, TRAIN_IMG_DIR):

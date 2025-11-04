@@ -21,7 +21,7 @@ outputs/
 data/
 datasets/
 images/
-*.csv
+#*.csv
 *.xlsx
 
 # Jupyter

@@ -1,7 +1,3 @@
-"""
-임시로 만든 transform 파일
-이름도 임시에요.
-"""
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
